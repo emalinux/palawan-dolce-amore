@@ -1,0 +1,39 @@
+baseURL: "/"
+title: "Palawan Dolce Amore Tribe Association"
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: false
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+  it:
+    languageName: "Italiano"
+    weight: 2
+
+params:
+  tagline: "Helping tribal communities in Palawan, Philippines"
+  orgName: "Palawan Dolce Amore Tribe Association"
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: "/"
+      weight: 1
+    - identifier: about
+      name: About us
+      url: "/about/"
+      weight: 2
+    - identifier: projects
+      name: Projects
+      url: "/projects/"
+      weight: 3
+    - identifier: donate
+      name: Donate
+      url: "/donate/"
+      weight: 4
+    - identifier: contact
+      name: Contact
+      url: "/contact/"
+      weight: 5
