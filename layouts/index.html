@@ -1,0 +1,23 @@
+{{ define "main" }}
+
+<section class="hero">
+  <h1>{{ .Site.Title }}</h1>
+  <p>{{ .Site.Params.tagline }}</p>
+  <p><a href="/donate/" class="btn">Support the community</a></p>
+</section>
+
+<section>
+  <h2>Projects by year</h2>
+  <div class="project-list">
+    {{ range sort (where .Site.Pages "Section" "projects") "Title" }}
+      {{ if .IsSection }}
+      <div class="project-card">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
+      </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</section>
+
+{{ end }}
