@@ -1,0 +1,76 @@
+{{ define "main" }}
+
+{{ if .Params.year }}
+  <!-- PAGINA ANNO (es. /projects/2019/) -->
+  <div class="page-container projects-year-page">
+
+    <h1>{{ .Title }}</h1>
+
+    {{ with .Params.description }}
+      <p class="projects-year-intro">{{ . }}</p>
+    {{ end }}
+
+    <!-- Slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <div class="projects-slider-wrapper">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          {{ range .Params.featuredPhotos }}
+          <div class="swiper-slide">
+            <img src="{{ . }}" />
+          </div>
+          {{ end }}
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      new Swiper(".mySwiper", {
+        loop: true,
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      });
+    </script>
+
+    <hr style="margin: 30px 0;" />
+
+    <!-- Grid -->
+    <h2 class="projects-gallery-title">Full photo gallery</h2>
+
+    {{ $dir := .Params.galleryDir }}
+    {{ if $dir }}
+      <div class="projects-gallery">
+        {{ range readDir (printf "static%s" $dir) }}
+          {{ if not .IsDir }}
+          <div>
+            <img src="{{ printf "%s%s" $dir .Name }}" />
+          </div>
+          {{ end }}
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="projects-gallery-empty">No gallery configured for this year yet.</p>
+    {{ end }}
+
+  </div>
+
+{{ else }}
+  <!-- PAGINA ROOT /projects/ -->
+  <div class="page-container projects-list-page">
+    <h1>Projects by year</h1>
+
+    <ul class="projects-year-list">
+      {{ range .Pages.ByParam "year" }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}
+
+{{ end }}

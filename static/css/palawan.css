@@ -1,0 +1,88 @@
+/* Contenitore generale delle pagine */
+.page-container {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    padding: 0 16px;
+  }
+  
+  /* --- Projects: pagina elenco anni --- */
+  
+  .projects-list-page h1 {
+    text-align: center;
+    margin: 40px 0 20px;
+  }
+  
+  .projects-year-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .projects-year-list li {
+    margin: 6px 0;
+  }
+  
+  .projects-year-list a {
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  /* --- Projects: pagina singolo anno --- */
+  
+  .projects-year-page h1 {
+    text-align: center;
+    margin: 40px 0 10px;
+  }
+  
+  .projects-year-intro {
+    text-align: center;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+  
+  /* Slider wrapper */
+  .projects-slider-wrapper {
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+  
+  /* Swiper override minimo */
+  .projects-slider-wrapper .swiper {
+    width: 100%;
+  }
+  
+  .projects-slider-wrapper img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Titolo galleria */
+  .projects-gallery-title {
+    margin: 10px 0 15px;
+  }
+  
+  /* Grid foto */
+  .projects-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  
+  .projects-gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  
+  /* Messaggio fallback */
+  .projects-gallery-empty {
+    color: #777;
+    font-style: italic;
+  }
