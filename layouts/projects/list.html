@@ -33,6 +33,11 @@
     <script>
       new Swiper(".mySwiper", {
         loop: true,
+        speed: 600,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
         pagination: { el: ".swiper-pagination", clickable: true },
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
       });
@@ -40,23 +45,79 @@
 
     <hr style="margin: 30px 0;" />
 
-    <!-- Grid -->
+    <!-- GALLERY CON LAZYLOAD + INFINITE SCROLL -->
     <h2 class="projects-gallery-title">Full photo gallery</h2>
 
     {{ $dir := .Params.galleryDir }}
+    {{ $page := . }}
     {{ if $dir }}
-      <div class="projects-gallery">
+      <div class="projects-gallery" id="projects-gallery">
         {{ range readDir (printf "static%s" $dir) }}
           {{ if not .IsDir }}
-          <div>
-            <img src="{{ printf "%s%s" $dir .Name }}" />
-          </div>
+            {{ $img := printf "%s%s" $dir .Name }}
+            <a href="{{ $img }}" class="glightbox gallery-item" data-gallery="year-{{ $page.Params.year }}">
+              <img src="{{ $img }}" alt="" loading="lazy" />
+            </a>
           {{ end }}
         {{ end }}
       </div>
+      <div id="gallery-sentinel"></div>
     {{ else }}
       <p class="projects-gallery-empty">No gallery configured for this year yet.</p>
     {{ end }}
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var gallery = document.getElementById("projects-gallery");
+        if (!gallery) return;
+
+        var items = Array.prototype.slice.call(gallery.querySelectorAll(".gallery-item"));
+        if (!items.length) return;
+
+        var batchSize = 40;   // quante foto per blocco
+        var shown = 0;
+
+        // nascondi tutto all'inizio
+        items.forEach(function (item) {
+          item.classList.add("is-hidden");
+        });
+
+        function showNextBatch() {
+          var next = shown + batchSize;
+          for (var i = shown; i < next && i < items.length; i++) {
+            items[i].classList.remove("is-hidden");
+            items[i].classList.add("is-visible");
+          }
+          shown = next;
+          if (shown >= items.length && sentinel) {
+            if (observer) observer.disconnect();
+            if (sentinel.parentNode) sentinel.parentNode.removeChild(sentinel);
+          }
+        }
+
+        var sentinel = document.getElementById("gallery-sentinel");
+        var observer = null;
+
+        if ("IntersectionObserver" in window && sentinel) {
+          observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                showNextBatch();
+              }
+            });
+          });
+          observer.observe(sentinel);
+        } else {
+          // fallback: se il browser è vecchio, mostra tutto
+          items.forEach(function (item) {
+            item.classList.remove("is-hidden");
+          });
+        }
+
+        // primo blocco subito visibile
+        showNextBatch();
+      });
+    </script>
 
   </div>
 

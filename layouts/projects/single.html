@@ -1,0 +1,53 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+<p>Highlights from {{ .Params.year }}.</p>
+
+<!-- Slider -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<div class="swiper mySwiper" style="width:100%; max-width:800px; margin:auto;">
+  <div class="swiper-wrapper">
+    {{ range .Params.featuredPhotos }}
+    <div class="swiper-slide">
+      <img src="{{ . }}" style="width:100%; border-radius:6px;" />
+    </div>
+    {{ end }}
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  new Swiper(".mySwiper", {
+    loop: true,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+  });
+</script>
+
+<hr style="margin: 40px 0;" />
+
+<!-- Grid -->
+<h2>Full photo gallery</h2>
+
+<div style="
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap:10px;
+  margin-top:20px;
+">
+  {{ $dir := .Params.galleryDir }}
+  {{ range readDir (printf "static%s" $dir) }}
+  {{ if not .IsDir }}
+  <div>
+    <img src="{{ printf "%s%s" $dir .Name }}" style="width:100%; border-radius:4px;" />
+  </div>
+  {{ end }}
+  {{ end }}
+</div>
+
+{{ end }}
