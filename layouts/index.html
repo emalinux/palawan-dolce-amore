@@ -1,23 +1,74 @@
 {{ define "main" }}
 
-<section class="hero">
-  <h1>{{ .Site.Title }}</h1>
-  <p>{{ .Site.Params.tagline }}</p>
-  <p><a href="/donate/" class="btn">Support the community</a></p>
-</section>
+<div class="page-container">
 
-<section>
-  <h2>Projects by year</h2>
-  <div class="project-list">
-    {{ range sort (where .Site.Pages "Section" "projects") "Title" }}
-      {{ if .IsSection }}
-      <div class="project-card">
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
-      </div>
-      {{ end }}
-    {{ end }}
-  </div>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <img src="/images/logok.png"
+         alt="Palawan Dolce Amore Tribe Association logo"
+         class="hero-logo">
+
+    <h1>Supporting tribal communities in Palawan</h1>
+
+    <p class="hero-text">
+      Our services include health care support, food and shelter provision, and
+      assistance in developing a sense of pride amongst the tribe, which helps
+      build courage and prevent discrimination.
+    </p>
+
+    <p class="hero-text">
+      Palawan “Dolce Amore” Tribe Association is a not-for-profit organisation
+      which helps tribal and indigenous people in need and provides opportunities
+      for the benefit of our communities.
+    </p>
+
+    <a href="{{ "/donate/" | relLangURL }}" class="btn btn-primary">
+      Support the community
+    </a>
+  </section>
+
+  <!-- HIGHLIGHT CARDS -->
+  <section class="home-highlights">
+    <h2>How your help makes a difference</h2>
+
+    <div class="card-grid">
+      <article class="home-card home-card--health">
+        <h3>Health & care</h3>
+        <p>
+          Basic medical support, medicines and transport so that families
+          in remote areas can reach hospitals and clinics.
+        </p>
+      </article>
+
+      <article class="home-card home-card--food">
+        <h3>Food & shelter</h3>
+        <p>
+          Emergency food, safe places to stay and essential items for
+          children and elders in the tribe.
+        </p>
+      </article>
+
+      <article class="home-card home-card--pride">
+        <h3>Dignity & education</h3>
+        <p>
+          School materials, community activities and projects that help
+          build confidence and reduce discrimination.
+        </p>
+      </article>
+
+      <article class="home-card home-card--projects">
+        <h3>Stories from the field</h3>
+        <p>
+          Photo stories from 2019 to today, showing how donations become
+          concrete help for the Palawan communities.
+        </p>
+        <a href="{{ "/projects/" | relLangURL }}" class="card-link">
+          View projects by year →
+        </a>
+      </article>
+    </div>
+  </section>
+
+</div>
 
 {{ end }}
