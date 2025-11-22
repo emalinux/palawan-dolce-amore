@@ -1,4 +1,6 @@
-/* ==== Reset leggero ===================================================== */
+/* =======================================================================
+   RESET LEGGERO
+======================================================================= */
 
 *,
 *::before,
@@ -13,10 +15,21 @@ body {
   padding: 0;
   line-height: 1.5;
   color: #222;
-  background: #fafafa;
+  background: #fdfcf7; /* caldo, soft */
 }
 
-/* ==== Layout base ======================================================= */
+/* =======================================================================
+   VARIABILI BRAND
+======================================================================= */
+
+:root {
+  --logo-purple: #5913a8;
+  --logo-green: #1eb000;
+}
+
+/* =======================================================================
+   LAYOUT BASE
+======================================================================= */
 
 .page-container {
   max-width: 1040px;
@@ -24,11 +37,17 @@ body {
   padding: 2.5rem 1.25rem 3rem;
 }
 
-/* ==== HEADER ============================================================ */
+/* =======================================================================
+   HEADER
+======================================================================= */
 
 .site-header {
   background: #ffffff;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06); /* stacco più deciso */
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .site-header-inner {
@@ -41,32 +60,45 @@ body {
   gap: 1.5rem;
 }
 
+/* Nome associazione */
+
 .site-title a {
   font-weight: 700;
-  font-size: 0.98rem;
+  font-size: 1.08rem;
   text-decoration: none;
-  color: #333;
+  color: var(--logo-purple);
 }
 
+/* Menu principale */
+
 .site-nav a {
-  font-size: 0.9rem;
-  margin-left: 0.75rem;
+  font-size: 1rem;
+  margin-left: 0.9rem;
   text-decoration: none;
-  color: #444;
+  color: var(--logo-green);
   padding-bottom: 0.15rem;
   border-bottom: 2px solid transparent;
+  font-weight: 500;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .site-nav a:hover {
-  color: #000;
+  color: #087900;
+  transform: translateY(-1px);
 }
 
 .site-nav a.is-active {
-  border-color: #4caf50;
-  color: #000;
+  color: var(--logo-purple);
+  border-color: var(--logo-purple);
+  font-weight: 600;
 }
 
-/* ==== HERO ============================================================== */
+/* =======================================================================
+   HERO HOME
+======================================================================= */
 
 .hero {
   text-align: center;
@@ -94,6 +126,8 @@ body {
   color: #444;
 }
 
+/* Bottoni generici */
+
 .btn {
   display: inline-block;
   margin-top: 1.75rem;
@@ -110,7 +144,9 @@ body {
   background: #4caf50;
   color: #fff;
   box-shadow: 0 8px 18px rgba(76, 175, 80, 0.25);
-  transition: background 0.15s ease, transform 0.15s ease,
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease,
     box-shadow 0.15s ease;
 }
 
@@ -120,7 +156,9 @@ body {
   box-shadow: 0 10px 24px rgba(76, 175, 80, 0.28);
 }
 
-/* ==== HIGHLIGHT CARDS =================================================== */
+/* =======================================================================
+   HOME – HIGHLIGHT CARDS
+======================================================================= */
 
 .home-highlights h2 {
   font-size: 1.4rem;
@@ -159,7 +197,7 @@ body {
   inset: 0;
   background-size: cover;
   background-position: center;
-  filter: brightness(0.80);
+  filter: brightness(0.8);
   z-index: -2;
   transition: filter 0.3s ease;
 }
@@ -171,7 +209,7 @@ body {
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.55),
-    rgba(0, 0, 0, 0.10)
+    rgba(0, 0, 0, 0.1)
   );
   z-index: -1;
   transition: background 0.3s ease;
@@ -186,7 +224,7 @@ body {
 .home-card:hover::after {
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.40),
+    rgba(0, 0, 0, 0.4),
     rgba(0, 0, 0, 0.05)
   );
 }
@@ -236,7 +274,258 @@ body {
   text-decoration: underline;
 }
 
-/* ==== Footer ============================================================ */
+/* =======================================================================
+   GENERIC PAGE BODY & CONTACT
+======================================================================= */
+
+.page-body {
+  font-size: 0.98rem;
+  color: #444;
+}
+
+.page-body p {
+  margin-bottom: 0.9rem;
+}
+
+.contact-page {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.contact-page h3 {
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+}
+
+.contact-page a {
+  color: #1565c0;
+}
+
+.contact-page a:hover {
+  text-decoration: underline;
+}
+
+/* =======================================================================
+   PAGE HERO (logo sopra ai titoli delle pagine interne)
+======================================================================= */
+
+.page-hero {
+  text-align: center;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.page-hero img {
+  max-width: 220px;
+  width: auto;
+  height: auto;
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+}
+
+/* =======================================================================
+   PROJECTS – YEAR PAGES
+======================================================================= */
+
+.projects-year-page {
+  padding-top: 2rem;
+}
+
+.projects-year-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.projects-year-intro {
+  max-width: 720px;
+  font-size: 0.98rem;
+  color: #555;
+}
+
+/* Slider evidenza */
+
+.projects-slider-section {
+  margin-top: 1.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.projects-swiper {
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+}
+
+.projects-swiper .swiper-slide img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gallery grid */
+
+.projects-gallery-section {
+  margin-top: 1rem;
+}
+
+.projects-gallery-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.projects-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.projects-gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.projects-gallery-item img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.projects-gallery-item:hover img {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+
+/* Immagini dettaglio progetto */
+
+.project-detail img {
+  max-width: 900px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+/* =======================================================================
+   PROJECTS – ROOT /projects/
+======================================================================= */
+
+.projects-index-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.projects-index-intro {
+  max-width: 720px;
+  font-size: 0.98rem;
+  color: #444;
+}
+
+.projects-year-section {
+  margin-top: 2.5rem;
+}
+
+.projects-year-heading {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.projects-year-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.projects-year-list a {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease,
+    box-shadow 0.15s ease,
+    color 0.15s ease;
+}
+
+.projects-year-list a:hover {
+  background: #29d65a;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(41, 214, 90, 0.35);
+  transform: translateY(-1px);
+}
+
+/* =======================================================================
+   PRESS & MEDIA
+======================================================================= */
+
+.press-page .press-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.press-intro {
+  max-width: 720px;
+  margin: 0.25rem 0 1.75rem;
+  font-size: 0.98rem;
+  color: #444;
+}
+
+/* Griglia articoli */
+
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.press-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.press-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.press-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+}
+
+.press-caption {
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+  color: #444;
+  font-weight: 500;
+}
+
+/* =======================================================================
+   FOOTER
+======================================================================= */
 
 footer {
   padding: 1rem 2rem;
@@ -255,7 +544,9 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* ==== Responsive small screen ========================================== */
+/* =======================================================================
+   RESPONSIVE
+======================================================================= */
 
 @media (max-width: 600px) {
   .page-container {
@@ -268,5 +559,29 @@ footer a:hover {
 
   .hero-text {
     font-size: 0.95rem;
+  }
+
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav a {
+    margin-left: 0;
+    margin-right: 0.6rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .projects-swiper .swiper-slide img {
+    height: 260px;
+  }
+
+  .projects-gallery-item img {
+    height: 180px;
+  }
+
+  .press-card img {
+    height: 260px;
   }
 }

@@ -1,17 +1,9 @@
 {{ define "main" }}
-<article>
-  <h1>{{ .Title }}</h1>
+  <div class="page-container">
+    <h1>{{ .Title }}</h1>
 
-  <div>
-    {{ .Content }}
-  </div>
-
-  {{ if .IsSection }}
-    <div class="section-children">
-      {{ range .Pages }}
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-      {{ end }}
+    <div class="page-body">
+      {{ .Content }}
     </div>
-  {{ end }}
-</article>
+  </div>
 {{ end }}

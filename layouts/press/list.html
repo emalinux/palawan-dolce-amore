@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+<div class="page-container">
+  <h1>Press & Media</h1>
+  <p>Newspaper articles and media coverage about the Palawan “Dolce Amore” projects.</p>
+
+  <h2>Newspaper articles & media</h2>
+
+  <div class="press-grid">
+    {{ range $i, $f := readDir "static/images/press" }}
+      {{ if not $f.IsDir }}
+        {{ $path := printf "/images/press/%s" $f.Name }}
+        {{ $caption := replace (replace $f.Name ".jpg" "") "_" " " }}
+
+        <div class="press-card">
+          <a href="{{ $path }}" class="glightbox" data-gallery="press">
+            <img src="{{ $path }}" alt="{{ $caption }}" loading="lazy">
+          </a>
+          <div class="press-caption">{{ $caption }}</div>
+        </div>
+
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}

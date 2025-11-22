@@ -2,9 +2,6 @@
 title: "About us"
 ---
 
----
-title: "About us"
----
 
 **Palawan Dolce Amore Tribe Association** is a small non-profit initiative that supports tribal communities living in remote areas of Palawan, Philippines.
 

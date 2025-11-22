@@ -9,8 +9,6 @@
     <meta name="description" content="{{ .Site.Params.tagline }}">
   {{- end }}
 
-  <!-- CSS principale del sito -->
-  <link rel="stylesheet" href="/css/palawan.css">
   <!-- Lightbox -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
@@ -52,6 +50,10 @@
   </header>
 
   <main>
+    {{ if not .IsHome }}
+      {{ partial "page-hero.html" . }}
+    {{ end }}
+
     {{ block "main" . }}{{ end }}
   </main>
 
@@ -65,6 +67,9 @@
       © {{ now.Year }} {{ .Site.Params.orgName }}
     </small>
   </footer>
+
+  <!-- CSS principale del sito -->
+  <link rel="stylesheet" href="/css/palawan.css">
 
   <!-- Lightbox JS -->
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>

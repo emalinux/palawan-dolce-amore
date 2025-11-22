@@ -13,5 +13,5 @@ featuredPhotos:
   - "/images/projects/2022/featured/07.jpg"
   - "/images/projects/2022/featured/08.jpg"
 
-galleryDir: "/images/projects/2021/all/"
+galleryDir: "/images/projects/2022/all/"
 ---

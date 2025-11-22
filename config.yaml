@@ -37,3 +37,12 @@ menu:
       name: Contact
       url: "/contact/"
       weight: 5
+    - identifier: press
+      name: Press & media
+      url: "/press/"
+      weight: 6  
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true       

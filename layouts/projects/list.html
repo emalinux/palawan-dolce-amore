@@ -1,24 +1,26 @@
 {{ define "main" }}
 
 {{ if .Params.year }}
-  <!-- PAGINA ANNO (es. /projects/2019/) -->
+  <!-- PAGINA ANNO: es. /projects/2019/ -->
+
   <div class="page-container projects-year-page">
 
-    <h1>{{ .Title }}</h1>
+    <header class="projects-year-header">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.description }}
+        <p class="projects-year-intro">{{ . }}</p>
+      {{ end }}
+    </header>
 
-    {{ with .Params.description }}
-      <p class="projects-year-intro">{{ . }}</p>
-    {{ end }}
+    <!-- Slider evidenza -->
+    <section class="projects-slider-section">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <!-- Slider -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <div class="projects-slider-wrapper">
-      <div class="swiper mySwiper">
+      <div class="swiper projects-swiper">
         <div class="swiper-wrapper">
           {{ range .Params.featuredPhotos }}
           <div class="swiper-slide">
-            <img src="{{ . }}" />
+            <img src="{{ . }}" alt="" loading="lazy" />
           </div>
           {{ end }}
         </div>
@@ -27,111 +29,66 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-      new Swiper(".mySwiper", {
-        loop: true,
-        speed: 600,
-        autoplay: {
-          delay: 4000,
-          disableOnInteraction: false,
-        },
-        pagination: { el: ".swiper-pagination", clickable: true },
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-      });
-    </script>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          if (document.querySelector(".projects-swiper")) {
+            new Swiper(".projects-swiper", {
+              loop: true,
+              pagination: { el: ".swiper-pagination", clickable: true },
+              navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              },
+            });
+          }
+        });
+      </script>
+    </section>
 
-    <hr style="margin: 30px 0;" />
+    <!-- Griglia full gallery con lightbox -->
+    <section class="projects-gallery-section">
+      <h2 class="projects-gallery-title">Full photo gallery</h2>
 
-    <!-- GALLERY CON LAZYLOAD + INFINITE SCROLL -->
-    <h2 class="projects-gallery-title">Full photo gallery</h2>
-
-    {{ $dir := .Params.galleryDir }}
-    {{ $page := . }}
-    {{ if $dir }}
-      <div class="projects-gallery" id="projects-gallery">
+      <div class="projects-gallery-grid">
+        {{ $dir := .Params.galleryDir }}
         {{ range readDir (printf "static%s" $dir) }}
           {{ if not .IsDir }}
-            {{ $img := printf "%s%s" $dir .Name }}
-            <a href="{{ $img }}" class="glightbox gallery-item" data-gallery="year-{{ $page.Params.year }}">
-              <img src="{{ $img }}" alt="" loading="lazy" />
+            {{ $path := printf "%s%s" $dir .Name }}
+            <a href="{{ $path }}" class="glightbox projects-gallery-item">
+              <img src="{{ $path }}" alt="" loading="lazy" />
             </a>
           {{ end }}
         {{ end }}
       </div>
-      <div id="gallery-sentinel"></div>
-    {{ else }}
-      <p class="projects-gallery-empty">No gallery configured for this year yet.</p>
-    {{ end }}
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var gallery = document.getElementById("projects-gallery");
-        if (!gallery) return;
-
-        var items = Array.prototype.slice.call(gallery.querySelectorAll(".gallery-item"));
-        if (!items.length) return;
-
-        var batchSize = 40;   // quante foto per blocco
-        var shown = 0;
-
-        // nascondi tutto all'inizio
-        items.forEach(function (item) {
-          item.classList.add("is-hidden");
-        });
-
-        function showNextBatch() {
-          var next = shown + batchSize;
-          for (var i = shown; i < next && i < items.length; i++) {
-            items[i].classList.remove("is-hidden");
-            items[i].classList.add("is-visible");
-          }
-          shown = next;
-          if (shown >= items.length && sentinel) {
-            if (observer) observer.disconnect();
-            if (sentinel.parentNode) sentinel.parentNode.removeChild(sentinel);
-          }
-        }
-
-        var sentinel = document.getElementById("gallery-sentinel");
-        var observer = null;
-
-        if ("IntersectionObserver" in window && sentinel) {
-          observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                showNextBatch();
-              }
-            });
-          });
-          observer.observe(sentinel);
-        } else {
-          // fallback: se il browser è vecchio, mostra tutto
-          items.forEach(function (item) {
-            item.classList.remove("is-hidden");
-          });
-        }
-
-        // primo blocco subito visibile
-        showNextBatch();
-      });
-    </script>
+    </section>
 
   </div>
 
 {{ else }}
   <!-- PAGINA ROOT /projects/ -->
-  <div class="page-container projects-list-page">
-    <h1>Projects by year</h1>
 
-    <ul class="projects-year-list">
-      {{ range .Pages.ByParam "year" }}
-        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-      {{ end }}
-    </ul>
+  <div class="page-container projects-index-page">
+    <header class="projects-index-header">
+      <h1>{{ .Title }}</h1>
+      <div class="projects-index-intro">
+        {{ .Content }}
+      </div>
+    </header>
+
+    <section class="projects-year-section">
+      <h2 class="projects-year-heading">Explore the projects by year</h2>
+      <ul class="projects-year-list">
+        {{ range .Pages.ByParam "year" }}
+          <li>
+            <a href="{{ .RelPermalink }}">{{ .Params.year }}</a>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
   </div>
+
 {{ end }}
 
 {{ end }}
