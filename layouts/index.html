@@ -8,64 +8,151 @@
          alt="Palawan Dolce Amore Tribe Association logo"
          class="hero-logo">
 
-    <h1>Supporting tribal communities in Palawan</h1>
+    <!-- TITOLI -->
+    <h1>
+      {{ if eq .Site.Language.Lang "it" }}
+        Sosteniamo le comunità tribali di Palawan
+      {{ else }}
+        Supporting tribal communities in Palawan
+      {{ end }}
+    </h1>
 
+    <!-- PARAGRAFO 1 -->
     <p class="hero-text">
-      Our services include health care support, food and shelter provision, and
-      assistance in developing a sense of pride amongst the tribe, which helps
-      build courage and prevent discrimination.
+      {{ if eq .Site.Language.Lang "it" }}
+        I nostri servizi includono assistenza sanitaria, cibo e riparo,
+        insieme a un supporto che aiuta a sviluppare un senso di dignità
+        all’interno della tribù, favorendo coraggio e riducendo la discriminazione.
+      {{ else }}
+        Our services include health care support, food and shelter provision,
+        and assistance in developing a sense of pride amongst the tribe,
+        which helps build courage and prevent discrimination.
+      {{ end }}
     </p>
 
+    <!-- PARAGRAFO 2 -->
     <p class="hero-text">
-      Palawan “Dolce Amore” Tribe Association is a not-for-profit organisation
-      which helps tribal and indigenous people in need and provides opportunities
-      for the benefit of our communities.
+      {{ if eq .Site.Language.Lang "it" }}
+        La Palawan “Dolce Amore” Tribe Association è un'organizzazione senza scopo di lucro
+        che sostiene le persone tribali e indigene in difficoltà, offrendo opportunità
+        per il benessere delle nostre comunità.
+      {{ else }}
+        Palawan “Dolce Amore” Tribe Association is a not-for-profit organisation
+        which helps tribal and indigenous people in need and provides opportunities
+        for the benefit of our communities.
+      {{ end }}
     </p>
 
+    <!-- BOTTONE -->
     <a href="{{ "/donate/" | relLangURL }}" class="btn btn-primary">
-      Support the community
+      {{ if eq .Site.Language.Lang "it" }}
+        Sostieni la comunità
+      {{ else }}
+        Support the community
+      {{ end }}
     </a>
   </section>
 
   <!-- HIGHLIGHT CARDS -->
   <section class="home-highlights">
-    <h2>How your help makes a difference</h2>
+    <h2>
+      {{ if eq .Site.Language.Lang "it" }}
+        Come il tuo aiuto fa la differenza
+      {{ else }}
+        How your help makes a difference
+      {{ end }}
+    </h2>
 
     <div class="card-grid">
+      
+      <!-- CARD 1 -->
       <article class="home-card home-card--health">
-        <h3>Health & care</h3>
+        <h3>
+          {{ if eq .Site.Language.Lang "it" }}
+            Salute e cura
+          {{ else }}
+            Health & care
+          {{ end }}
+        </h3>
         <p>
-          Basic medical support, medicines and transport so that families
-          in remote areas can reach hospitals and clinics.
+          {{ if eq .Site.Language.Lang "it" }}
+            Supporto medico di base, farmaci e trasporti per permettere alle famiglie delle aree remote
+            di raggiungere ospedali e cliniche.
+          {{ else }}
+            Basic medical support, medicines and transport so that families
+            in remote areas can reach hospitals and clinics.
+          {{ end }}
         </p>
       </article>
 
+      <!-- CARD 2 -->
       <article class="home-card home-card--food">
-        <h3>Food & shelter</h3>
+        <h3>
+          {{ if eq .Site.Language.Lang "it" }}
+            Cibo e riparo
+          {{ else }}
+            Food & shelter
+          {{ end }}
+        </h3>
         <p>
-          Emergency food, safe places to stay and essential items for
-          children and elders in the tribe.
+          {{ if eq .Site.Language.Lang "it" }}
+            Cibo d’emergenza, luoghi sicuri dove stare e beni essenziali
+            per bambini e anziani della tribù.
+          {{ else }}
+            Emergency food, safe places to stay and essential items for
+            children and elders in the tribe.
+          {{ end }}
         </p>
       </article>
 
+      <!-- CARD 3 -->
       <article class="home-card home-card--pride">
-        <h3>Dignity & education</h3>
+        <h3>
+          {{ if eq .Site.Language.Lang "it" }}
+            Dignità ed educazione
+          {{ else }}
+            Dignity & education
+          {{ end }}
+        </h3>
         <p>
-          School materials, community activities and projects that help
-          build confidence and reduce discrimination.
+          {{ if eq .Site.Language.Lang "it" }}
+            Materiale scolastico, attività comunitarie e progetti che favoriscono
+            fiducia e riducono la discriminazione.
+          {{ else }}
+            School materials, community activities and projects that help
+            build confidence and reduce discrimination.
+          {{ end }}
         </p>
       </article>
 
+      <!-- CARD 4 -->
       <article class="home-card home-card--projects">
-        <h3>Stories from the field</h3>
+        <h3>
+          {{ if eq .Site.Language.Lang "it" }}
+            Storie dal campo
+          {{ else }}
+            Stories from the field
+          {{ end }}
+        </h3>
         <p>
-          Photo stories from 2019 to today, showing how donations become
-          concrete help for the Palawan communities.
+          {{ if eq .Site.Language.Lang "it" }}
+            Racconti fotografici dal 2019 a oggi che mostrano come le donazioni
+            si trasformano in aiuti concreti per le comunità di Palawan.
+          {{ else }}
+            Photo stories from 2019 to today, showing how donations become
+            concrete help for the Palawan communities.
+          {{ end }}
         </p>
+
         <a href="{{ "/projects/" | relLangURL }}" class="card-link">
-          View projects by year →
+          {{ if eq .Site.Language.Lang "it" }}
+            Vai ai progetti →
+          {{ else }}
+            View projects by year →
+          {{ end }}
         </a>
       </article>
+
     </div>
   </section>
 

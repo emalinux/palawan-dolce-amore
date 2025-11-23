@@ -1,5 +1,5 @@
 ---
-title: "Donate"
+title: "Donate 🙏"
 ---
 
 Your support can make a **real difference** in the daily life of the Palawan tribal communities.

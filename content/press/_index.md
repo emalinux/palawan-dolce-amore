@@ -1,6 +1,13 @@
 ---
 title: "Press & Media"
 description: "Newspaper articles and media coverage about the Palawan “Dolce Amore” projects."
+---
+
+In questa pagina raccogliamo gli articoli di giornale e i servizi usciti sulla stampa
+che raccontano i progetti della **Palawan “Dolce Amore” Tribe Association**.
+
+Ogni articolo è una piccola testimonianza del lavoro svolto grazie al supporto di volontari,
+donatori e amici, in Italia e nelle Filippine.
 
 pressItems:
   - image: "/images/press/La guida.jpg"

@@ -34,18 +34,30 @@
   <header class="site-header">
     <div class="site-header-inner">
       <div class="site-title">
-        <a href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a>
+        <a href="{{ "/" | relLangURL }}">
+          <span class="site-title-line1">Palawan Dolce Amore</span>
+          <span class="site-title-line2">- Tribe Association -</span>
+        </a>
       </div>
 
       {{ $currentPage := . }}
-      <nav class="site-nav">
-        {{ range .Site.Menus.main }}
-          {{ $isCurrent := $currentPage.IsMenuCurrent "main" . }}
-          <a href="{{ .URL | relLangURL }}" {{ if $isCurrent }}aria-current="page" class="is-active"{{ end }}>
-            {{ .Name }}
-          </a>
-        {{ end }}
-      </nav>
+      <nav class="site-nav" aria-label="Main navigation">
+  {{ $currentPage := . }}
+  {{ range .Site.Menus.main }}
+    {{ $isCurrent := or ($currentPage.IsMenuCurrent "main" .) (and (eq .Identifier "home") $currentPage.IsHome) }}
+    <a href="{{ .URL }}" {{ if $isCurrent }}class="is-active" aria-current="page"{{ end }}>
+      {{ .Name }}
+    </a>
+  {{ end }}
+</nav>
+      <div class="lang-switcher">
+        <a href="/" aria-label="English version">
+          <img src="/images/flags/uk.png" alt="English" />
+        </a>
+        <a href="/it/" aria-label="Versione italiana">
+          <img src="/images/flags/it.png" alt="Italiano" />
+        </a>
+      </div>  
     </div>
   </header>
 
@@ -57,15 +69,18 @@
     {{ block "main" . }}{{ end }}
   </main>
 
-  <footer>
-    <small>
-      Realizzato con ❤️ da 
-      <a href="https://www.assemblercomputer.net/" target="_blank">
-        Manuel – Assembler Computer
-      </a>
-      <br>
-      © {{ now.Year }} {{ .Site.Params.orgName }}
-    </small>
+    <footer class="site-footer">
+    <div class="footer-inner">
+      <p>
+        Realizzato con ❤️ da
+        <a href="https://www.assemblercomputer.net/" target="_blank" rel="noopener">
+          Manuel – Assembler Computer
+        </a>
+      </p>
+      <p>
+        © {{ now.Year }} {{ .Site.Params.orgName }}
+      </p>
+    </div>
   </footer>
 
   <!-- CSS principale del sito -->

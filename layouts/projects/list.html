@@ -66,8 +66,8 @@
 
   </div>
 
-{{ else }}
-  <!-- PAGINA ROOT /projects/ -->
+  {{ else }}
+  <!-- PAGINA ROOT /projects/ (tutte le lingue) -->
 
   <div class="page-container projects-index-page">
     <header class="projects-index-header">
@@ -78,9 +78,17 @@
     </header>
 
     <section class="projects-year-section">
-      <h2 class="projects-year-heading">Explore the projects by year</h2>
+      <h2 class="projects-year-heading">
+        {{ if eq .Lang "it" }}
+          Esplora i progetti per anno
+        {{ else }}
+          Explore the projects by year
+        {{ end }}
+      </h2>
+
       <ul class="projects-year-list">
-        {{ range .Pages.ByParam "year" }}
+        {{ $sec := .CurrentSection }}
+        {{ range $sec.Sections.ByParam "year" }}
           <li>
             <a href="{{ .RelPermalink }}">{{ .Params.year }}</a>
           </li>
