@@ -1,5 +1,7 @@
 # Palawan Dolce Amore Tribe Association – Hugo site
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dd411da4-0b54-42c9-bbbf-2e7d74d256be/deploy-status)](https://app.netlify.com/projects/timely-pasca-657021/deploys)
+
 Sito statico realizzato con **Hugo** per raccontare le attività
 dell’associazione *Palawan “Dolce Amore” Tribe Association*.
 
