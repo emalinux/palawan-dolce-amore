@@ -5,8 +5,12 @@
 Sito statico realizzato con **Hugo** per raccontare le attività
 dell’associazione *Palawan “Dolce Amore” Tribe Association*.
 
-Il progetto è stato sviluppato come lavoro pro bono
-da **Manuel – Assembler Computer** con supporto tecnico “Manuel & friends”.
+## 🧑‍💻 Autore
+
+**Il progetto è stato sviluppato come lavoro pro bono**
+Realizzato con ❤️ da [Manuel – Assembler Computer](https://www.assemblercomputer.net/)
+
+Contatti diretti? [📧 emalinux77@gmail.com](mailto:emalinux77@gmail.com)
 
 ---
 
