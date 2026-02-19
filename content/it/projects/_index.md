@@ -19,7 +19,7 @@ I nostri progetti si concentrano soprattutto su:
 Scegli un anno qui sotto e scopri come la generosità delle persone si è trasformata in aiuto concreto sul campo.
 
 <section class="projects-year-section">
-  <h2 class="projects-year-heading">Esplora i progetti per anno</h2>
+  <h2 class="projects-year-heading">Sfoglia i reportage fotografici per anno 📷</h2>
   <ul class="projects-year-list">
     <li><a href="/projects/2019/">2019</a></li>
     <li><a href="/projects/2021/">2021</a></li>
