@@ -18,7 +18,7 @@ languages:
           url: "/about/"
           weight: 2
         - identifier: projects
-          name: Projects
+          name: "📷 Projects"
           url: "/projects/"
           weight: 3
         - identifier: videos
@@ -52,7 +52,7 @@ languages:
           url: "/it/about/"
           weight: 2
         - identifier: projects
-          name: Progetti
+          name: 📷 Progetti
           url: "/projects/"              # <-- ATTENZIONE: va al ramo EN
           weight: 3
         - identifier: videos
