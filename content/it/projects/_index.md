@@ -21,12 +21,12 @@ Scegli un anno qui sotto e scopri come la generosità delle persone si è trasfo
 <section class="projects-year-section">
   <h2 class="projects-year-heading">Esplora i progetti per anno</h2>
   <ul class="projects-year-list">
-    <li><a href="/it/projects/2019/">2019</a></li>
-    <li><a href="/it/projects/2021/">2021</a></li>
-    <li><a href="/it/projects/2022/">2022</a></li>
-    <li><a href="/it/projects/2023/">2023</a></li>
-    <li><a href="/it/projects/2024/">2024</a></li>
-    <li><a href="/it/projects/2024-natale/">2024 - Natale</a></li>
-    <li><a href="/it/projects/2025/">2025</a></li>
+    <li><a href="/projects/2019/">2019</a></li>
+    <li><a href="/projects/2021/">2021</a></li>
+    <li><a href="/projects/2022/">2022</a></li>
+    <li><a href="/projects/2023/">2023</a></li>
+    <li><a href="/projects/2024/">2024</a></li>
+    <li><a href="/projects/2024-natale/">2024 - Natale</a></li>
+    <li><a href="/projects/2025/">2025</a></li>
   </ul>
 </section>
