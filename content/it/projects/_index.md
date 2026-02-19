@@ -26,7 +26,7 @@ Scegli un anno qui sotto e scopri come la generosità delle persone si è trasfo
     <li><a href="/projects/2022/">2022</a></li>
     <li><a href="/projects/2023/">2023</a></li>
     <li><a href="/projects/2024/">2024</a></li>
-    <li><a href="/projects/2024-natale/">2024 - Natale</a></li>
+    <li><a href="/projects/xmas_2024/">2024 - Natale</a></li>
     <li><a href="/projects/2025/">2025</a></li>
   </ul>
 </section>
