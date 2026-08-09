@@ -8,6 +8,7 @@ years:
   - 2024
   - "2024 - Christmas"
   - 2025
+  - "12_2025"
 ---
 
 🌱 *Small projects, real impact.*
